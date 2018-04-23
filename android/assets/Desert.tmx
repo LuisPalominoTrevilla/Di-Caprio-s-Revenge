@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="10" tilewidth="64" tileheight="64" nextobjectid="68">
+ <tileset firstgid="1" name="desierto" tilewidth="64" tileheight="64" tilecount="385" columns="35">
+  <image source="desierto.jpg" width="2243" height="750"/>
+ </tileset>
+ <tileset firstgid="386" name="desierto2" tilewidth="64" tileheight="64" tilecount="385" columns="35">
+  <image source="desierto2.jpg" width="2243" height="750"/>
+ </tileset>
+ <tileset firstgid="771" name="floor2" tilewidth="64" tileheight="64" tilecount="4" columns="2">
+  <image source="floor2.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="775" name="WALL 3" tilewidth="64" tileheight="64" tilecount="4" columns="2">
+  <image source="WALL 3.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="779" name="CAJA 2" tilewidth="64" tileheight="64" tilecount="4" columns="2">
+  <image source="CAJA 2.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="783" name="health" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="health.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="784" name="ammo-box" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="ammo-box.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="785" name="SAG" tilewidth="64" tileheight="64" tilecount="2" columns="1">
+  <image source="SAG.png" width="64" height="128"/>
+ </tileset>
+ <tileset firstgid="787" name="CARRO 1" tilewidth="64" tileheight="64" tilecount="8" columns="4">
+  <image source="CARRO 1.png" width="256" height="128"/>
+ </tileset>
+ <tileset firstgid="795" name="Collectible5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Collectible5.png" width="64" height="64"/>
+ </tileset>
+ <objectgroup name="Ground">
+  <object id="61" x="0" y="512" width="15400" height="128"/>
+  <object id="62" x="1664" y="128" width="768" height="13"/>
+  <object id="63" x="2688" y="192" width="512" height="16"/>
+  <object id="64" x="5248" y="256" width="894" height="13"/>
+  <object id="65" x="7168" y="128" width="512" height="14"/>
+  <object id="66" x="11392" y="256" width="384" height="11"/>
+ </objectgroup>
+ <objectgroup name="Crates">
+  <object id="2" x="640" y="256" width="384" height="256"/>
+  <object id="3" x="2432" y="384" width="256" height="128"/>
+  <object id="4" x="3584" y="128" width="128" height="384"/>
+  <object id="5" x="4352" y="384" width="128" height="128"/>
+  <object id="6" x="5504" y="128" width="128" height="128"/>
+  <object id="7" x="5824" y="128" width="128" height="128"/>
+  <object id="8" x="7680" y="128" width="128" height="384"/>
+  <object id="9" x="7296" y="51.5152" width="256" height="76.4848"/>
+  <object id="10" x="6528" y="436.364" width="256" height="75.6364"/>
+  <object id="11" x="7680" y="128" width="128" height="384"/>
+  <object id="12" x="8384" y="256" width="384" height="256"/>
+  <object id="13" x="9600" y="256" width="128" height="256"/>
+  <object id="14" x="10048" y="0" width="128" height="256"/>
+  <object id="15" x="10176" y="128" width="640" height="128"/>
+  <object id="16" x="11136" y="256" width="256" height="256"/>
+  <object id="17" x="12288" y="256" width="128" height="256"/>
+  <object id="18" x="12864" y="128" width="128" height="384"/>
+  <object id="19" x="13376" y="257.576" width="128" height="254.424"/>
+  <object id="21" x="13376" y="128" width="896" height="128"/>
+  <object id="22" x="15232" y="0" width="128" height="512"/>
+  <object id="24" x="0" y="0" width="14" height="512"/>
+ </objectgroup>
+ <layer name="Backround" width="240" height="10">
+  <data encoding="base64" compression="zlib">
+   eJzt1+WylQUUgOF99lEJRREFE1Gku7u7u7u7u0NQQVBQwQIFg+7u7u7u7u72uQX+MHNmvh/PBax3Zq2ZlSgUCiUmCUlJRnJSkJJUpCYNaUlHejKQkUxkJgtZyUZ2cpCTXOQmD3nJR34KUJBCFKYI4yJCofFMYCKTmMwUpjKN6cxgJrOYzRzmMo/5LGAhi1jMEpayjOWsYCWrWM0a1rKO9WwgUdAl6BIFuhSlGMUpQUlKUZoylKUc5alARSpRmSpUpRrVqUFNalGbOtSlHvVpQEMa0ZgmNKUZzdmowyY2s4WtbGM7O9jJLnazh73sYz8HOMghDnOEoxzjOCc4ySlOc4aznOM8F7jIJS5HBF2CLlGjSwta0orWtKEt7WhPBzrSic50oSvd6E4PetKL3vShL/3oz1cMYCBf8w3fMojBfMcQhnJFh6tc4zo3uMktbnOHu9zjPg94yCMe84SnPOM5LwiFQ6EIwkTyGq/zBtGITgxi8iZvESscdAm6RI0u3/MDwxjOj/zEz4xgJL/wK7/xO38witH8yV+MYSx/8w//8h/jGM8EJjKJyUxhKtOYzgze1uEdYvMucXiP94lLPD7gQz7iYz7hU+LzGQn4nC9IyJckIjFJSEoykpOClKQiNWlIS7pw0CXoEjW6zGQWs5nDXOYxnwUsZBGLWcJSlrGcFaxkFatZw1rWsZ4NbGQTm9nCVraxnR3sZBe7Sa9DBjKSicxkISvZyE4OcpKL3OQhL/nITwEKUojCFKEoxShOCUpSitKUoSzlKE8FKoaDLkGXqNFlD3vZx34OcJBDHOYIRznGcU5wklOc5gxnOcd5LnCRS1zmCle5xnVucJNb3OYOd7lHJR0qU4WqVKM6NahJLWpTh7rUoz4NaEgjGtOEpjSjOS1oSSta04a2tKM9HehIJzrTJRx0CbpEjS73ecBDHvGYJzzlGc95QchvEEGYSF7jdd4gGtGJQUze5C1i8TbvEJt3icN7vE9c4vEBH9JVh250pwc96UVv+tCXfvTnKwYwkK/5hm8ZxGC+YwhD+Z4fGMZwfuQnfmYEI/mFX/mN38NBl6DLy3eJFmmuyFfb5SM+5hM+JT6fkYDP+YKEfEkiEpOEpCQjOSlISSpSk4a0pCM9GchIJjKThaxkIzs5yMkfOoxiNH/yF2MYy9/8w7/8xzjGM4GJTGIyU5jKNKYzg5nMYjZzmMs85rOAhSxiMUtYGg66BF1evksMuxsz8tV2yUVu8pCXfOSnAAUpRGGKUJRiFKcEJSlFacpQlnKUpwIVqURlqlCValSnBjWpRW3qsEyH5axgJatYzRrWso71bGAjm9jMFrayje3sYCe72M0e9rKP/RzgIIc4zBGOcozjnAgHXYIuUaNLXepRnwY0pBGNaUJTmtGcFrSkFa1pQ1va0Z4OdKQTnelCV7rRnR70pBe96UNf+tGfkzqc4jRnOMs5znOBi1ziMle4yjWuc4Ob3OI2d7jLPe7zgIc84jFPeMoznvOCkNsZQTgy6BJ0iRpd/gerrMUB
+  </data>
+ </layer>
+ <layer name="Graphics" width="240" height="10">
+  <data encoding="base64" compression="zlib">
+   eJztmOsKwyAMhQvZ/X6/vv97LvshdMHVxEbNOg8Eodj5eaQ5w6apGoKO0DQnrDPWBUrTdGuJfKsW49Y4r0VRD3NrV89MVVf084Z1x3oY93aNfBvjjNaV28MprjUD/qilUn2qva7LlxQsIR9L92mfHBN3LK0Qh3Q/GvvK7c0c11oAf6SK/d5L9XrfuilYQj5azDrHxB1LK8Qh3Y/GvqS/0beHxOavyy7p9065U0u6P63/GZr5q5kTqX2njLH+cji5+Zvz7KX+9u0hffPXPbeav9L9hfqO1rqS/WvmRGrfKWOsvxxObv7mPHvr+cvtr6HvV8oZmxva+cu9T675+1/5uwc+d1u585fbX0O9jHKG7r1jc0M7f7/dJ1P+mr/y/G17qJ2/T4Wz79IBPteEWqwaGWD4BS4fD302Es4fok8abO/3xrVYNTHA8AtcPh7omEPng2f+EH3SYHu/9wKqUCmB
+  </data>
+ </layer>
+ <objectgroup name="Amo">
+  <object id="30" x="1920" y="72" width="64" height="56"/>
+  <object id="31" x="3840" y="456" width="64" height="56"/>
+  <object id="32" x="6912" y="456" width="64" height="56"/>
+  <object id="33" x="12096" y="458" width="64" height="54"/>
+ </objectgroup>
+ <objectgroup name="Health">
+  <object id="34" x="2574" y="262" width="36" height="54"/>
+  <object id="35" x="5708" y="134" width="36" height="56"/>
+  <object id="36" x="10318" y="6" width="34" height="54"/>
+ </objectgroup>
+ <objectgroup name="Collectibles">
+  <object id="67" x="13568" y="448" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Enemy1">
+  <object id="37" x="1216" y="448" width="64" height="64"/>
+  <object id="39" x="3200" y="448" width="64" height="64"/>
+  <object id="40" x="4992" y="448" width="64" height="64"/>
+  <object id="41" x="8064" y="448" width="64" height="64"/>
+  <object id="42" x="9984" y="448" width="64" height="64"/>
+  <object id="43" x="13120" y="448" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Enemy2">
+  <object id="44" x="13760" y="64" width="64" height="64"/>
+  <object id="45" x="13760" y="448" width="64" height="64"/>
+  <object id="46" x="10496" y="64" width="64" height="64"/>
+  <object id="47" x="8512" y="192" width="64" height="64"/>
+  <object id="49" x="5568" y="64" width="64" height="64"/>
+  <object id="50" x="1664" y="64" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Enemy3">
+  <object id="51" x="640" y="192" width="64" height="64"/>
+  <object id="52" x="2944" y="128" width="64" height="64"/>
+  <object id="53" x="3968" y="384" width="64" height="64"/>
+  <object id="54" x="6144" y="448" width="64" height="64"/>
+  <object id="55" x="7232" y="448" width="64" height="64"/>
+  <object id="56" x="11648" y="448" width="64" height="64"/>
+  <object id="57" x="9024" y="448" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Meta">
+  <object id="23" x="15126" y="387" width="24" height="123"/>
+ </objectgroup>
+</map>

@@ -1,0 +1,166 @@
+package com.palomino.luis.dicaprio.Sprites;
+
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
+import com.palomino.luis.dicaprio.DiCaprio;
+import com.palomino.luis.dicaprio.Scenes.Hud;
+
+import java.util.Random;
+
+/**
+ * Created by Carlos on 4/18/2016.
+ */
+public class Zombie1 extends Enemy{
+
+    private float stateTimer;
+    private float stateTime;
+    private Animation walkAnimation;
+    private Array<TextureRegion> frames;
+    int seg, soundType;
+
+    private int health;
+    private boolean isAlive;
+
+    public Zombie1(World world, float x, float y) {
+        super(world, x, y);
+        currentState = State.ALIVE;
+        frames = new Array<TextureRegion>();
+        frames.add(new TextureRegion(new Texture("ZOMBI 11.png")));
+        frames.add(new TextureRegion(new Texture("ZOMBI 21.png")));
+        frames.add(new TextureRegion(new Texture("ZOMBI 31.png")));
+        frames.add(new TextureRegion(new Texture("ZOMBI 41.png")));
+        frames.add(new TextureRegion(new Texture("ZOMBI 51.png")));
+        frames.add(new TextureRegion(new Texture("ZOMBI 61.png")));
+        walkAnimation = new Animation(0.15f, frames);
+        frames.clear();
+        stateTime = 0;
+        setBounds(getX(), getY(), 120 / DiCaprio.PPM, 180 / DiCaprio.PPM);
+        seg = random.nextInt(20) +1;
+        soundType = random.nextInt(2) +1;
+        health = 100;
+        isAlive = true;
+        velocity = new Vector2(.045f,0);
+        right = true;
+    }
+
+    public void update(float dt){
+        stateTime+= dt;
+        if(setToDestroyed && !destroyed){
+            world.destroyBody(b2body);
+            destroyed = true;
+        }
+        else if(!destroyed){
+            if(currentState != State.DEAD) {
+                if(b2body.isActive()) {
+                    b2body.applyLinearImpulse(velocity, b2body.getWorldCenter(), true);
+                }
+                if (right) {
+                    setPosition((b2body.getPosition().x - getWidth() / 2) + .06f, (b2body.getPosition().y - getHeight() / 2) - .05f);
+                } else {
+                    setPosition((b2body.getPosition().x - getWidth() / 2) - .06f, (b2body.getPosition().y - getHeight() / 2) - .05f);
+                }
+                setRegion(getFrame(dt));
+                playSounds(dt);
+            }else {
+                setRegion(destroyedZombi.getKeyFrame(stateTime, true));
+                if(stateTime > .4f){
+                    setToDestroyed = true;
+                }
+
+            }
+        }
+    }
+
+    public void playSounds(float dt){
+        if(stateTimer > seg){
+            switch (soundType){
+                case 1:
+                    DiCaprio.zombi1.play();
+                    break;
+                case 2:
+                    DiCaprio.zombi2.play();
+                    b2body.applyLinearImpulse(new Vector2(0,4f), b2body.getWorldCenter(), true);
+                    break;
+            }
+            soundType = random.nextInt(2) +1;
+            stateTimer = 0;
+            seg = random.nextInt(20) + 1;
+        }else{
+            stateTimer+= dt;
+        }
+    }
+
+    public TextureRegion getFrame(float dt){
+        TextureRegion region;
+        region = walkAnimation.getKeyFrame(stateTime, true);
+        if((b2body.getLinearVelocity().x < 0) && !region.isFlipX()){
+            region.flip(true, false);
+            right = false;
+        }
+        if((b2body.getLinearVelocity().x > 0) && region.isFlipX()){
+            region.flip(true, false);
+            right = true;
+        }
+        return region;
+    }
+
+    @Override
+    protected void defineEnemy() {
+        BodyDef bdef = new BodyDef();
+        bdef.position.set(getX(), getY());
+        bdef.type = BodyDef.BodyType.DynamicBody;
+        b2body = world.createBody(bdef);
+
+        FixtureDef fdef = new FixtureDef();
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(20 / DiCaprio.PPM, 75 / DiCaprio.PPM);
+        fdef.filter.categoryBits = DiCaprio.ENEMY_BIT;
+        fdef.filter.maskBits = DiCaprio.GROUND_BIT | DiCaprio.OBJECT_BIT | DiCaprio.ENEMY_BIT | DiCaprio.LEO_BIT | DiCaprio.BULLET_BIT;
+
+        fdef.shape = shape;
+        b2body.createFixture(fdef).setUserData(this);
+    }
+
+    @Override
+    public void reverseVelocity() {
+        if (right) {
+            velocity = new Vector2(-.045f, 0);
+            right = false;
+        } else {
+            velocity = new Vector2(.045f, 0);
+            right = true;
+        }
+    }
+
+
+    private boolean repeat = true;
+    @Override
+    public void destroyBody() {
+        if(Hud.arma == 1){
+            this.health -= 26;
+        }else{
+            this.health -= 60;
+        }
+        if((health <= 0) && repeat){
+            currentState = State.DEAD;
+            stateTime = 0;
+            repeat = false;
+            DiCaprio.blood.play();
+        }
+    }
+
+    public void draw(Batch batch){
+        if(!destroyed){
+            super.draw(batch);
+        }
+    }
+}
